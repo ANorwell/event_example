@@ -1,0 +1,6 @@
+datastores:
+  event:
+    hosts: 127.0.0.1
+    port: 9242
+    keyspace: test_event_keyspace
+    replication: "{ 'class' : 'SimpleStrategy', 'replication_factor' : 1 }"
