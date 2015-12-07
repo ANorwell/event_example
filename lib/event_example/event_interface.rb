@@ -29,7 +29,7 @@ class EventInterface
     # Push the specified user_id and event_type down the pipeline. These will be used by the
     # CassandraItems pipe to determine which events are retrieved. Subsequent pipes will
     # deserialize the data and instantiate the Event objects.
-    result = pipeline.push(user_id: user_id, event_type: event_type)
+    result = pipeline.push(options.merge(user_id: user_id, event_type: event_type))
     [result.value.to_a, result.status[:paging_state]]
   end
 
@@ -44,16 +44,15 @@ class EventInterface
     # Push the specified user_id down the pipeline. These will be used by the
     # CassandraItems pipe to determine which events are retrieved. Subsequent pipes will
     # deserialize the data and instantiate the Event objects.
-    result = pipeline.push(user_id: user_id)
+    result = pipeline.push(options.merge(user_id: user_id))
     [result.value.to_a, result.status[:paging_state]]
   end
 
   # Returns a specific event by ID
   # @param user_id [Integer]
   # @param event_id [Integer]
-  # @option options [String] :paging_state If provided, fetch this page of results
   # @return [Event|NilClass] The Event, or nil if not found
-  def self.find(user_id, event_id, options = {})
+  def self.find(user_id, event_id)
     # Create a read pipeline that reads from the events_by_id table
     pipeline = read_pipeline_from_table(:events_by_id)
 
