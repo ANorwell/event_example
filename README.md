@@ -1,7 +1,11 @@
 # Event Example
 
-This repo contains example code that builds an Event data with several access patterns,
+Example code that builds an Event data model with several access patterns,
 backed by Cassandra.
+
+The example uses the [https://github.com/solnic/virtus](virtus) gem to create the data model,
+the [https://github.com/backupify/pyper](pyper) gem to manage serialization and persistence,
+and [https://github.com/backupify/cass_schema](cass_schema) to manage the Cassandra schema.
 
 ## Usage
 
@@ -33,5 +37,5 @@ events, next_page_token = EventInterface.events_by_type(user_id, 'notification')
 Get a specific event for a user:
 
 ```ruby
-events, next_page_token = EventInterface.find(user_id, event_id)
+event = EventInterface.find(user_id, event_id)
 ```
