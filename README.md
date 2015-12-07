@@ -3,9 +3,9 @@
 Example code that builds an Event data model with several access patterns,
 backed by Cassandra.
 
-The example uses the [https://github.com/solnic/virtus](virtus) gem to create the data model,
-the [https://github.com/backupify/pyper](pyper) gem to manage serialization and persistence,
-and [https://github.com/backupify/cass_schema](cass_schema) to manage the Cassandra schema.
+The example uses the [virtus](https://github.com/solnic/virtus) gem to create the data model,
+the [pyper](https://github.com/backupify/pyper) gem to manage serialization and persistence,
+and [cass_schema](https://github.com/backupify/cass_schema) to manage the Cassandra schema.
 
 ## Usage
 
